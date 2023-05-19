@@ -55,10 +55,31 @@ public class StdIn {
         }
     }
 
+    public static double readDouble() {
+        try {
+            return scanner.nextDouble();
+        } catch (InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException(
+                    "attempts to read an 'double' value from standard input, " +
+                    "but next token is \"" + token + "\"."
+            );
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException(
+                    "attempts to read an 'double' from standard input, but no more tokens are available."
+            );
+        }
+    }
+
     public static void main(String[] args) {
         StdOut.print("Type int: ");
         int a = StdIn.readInt();
         StdOut.println("Your int was " + a);
+        StdOut.println();
+
+        StdOut.print("Type double: ");
+        double b = StdIn.readDouble();
+        StdOut.println("Your double was " + b);
         StdOut.println();
     }
 }
