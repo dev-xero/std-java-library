@@ -66,7 +66,23 @@ public class StdIn {
             );
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException(
-                    "attempts to read an 'double' from standard input, but no more tokens are available."
+                    "attempts to read a 'double' from standard input, but no more tokens are available."
+            );
+        }
+    }
+
+    public static float readFloat() {
+        try {
+            return scanner.nextFloat();
+        } catch (InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException(
+                    "attempts to read a 'float' value from standard input, " +
+                    "but next token is \"" + token + "\"."
+            );
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException(
+                    "attempts to read a 'float' from standard input, but no more tokens are available."
             );
         }
     }
@@ -80,6 +96,11 @@ public class StdIn {
         StdOut.print("Type double: ");
         double b = StdIn.readDouble();
         StdOut.println("Your double was " + b);
+        StdOut.println();
+
+        StdOut.print("Type float: ");
+        float c = StdIn.readFloat();
+        StdOut.println("Your float was " + c);
         StdOut.println();
     }
 }
