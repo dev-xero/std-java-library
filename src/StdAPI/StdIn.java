@@ -103,6 +103,24 @@ public class StdIn {
         }
     }
 
+    public static boolean readBoolean() {
+        try {
+            String token = scanner.next();
+            if (token.equalsIgnoreCase("true"))  return true;
+            if (token.equalsIgnoreCase("1"))     return true;
+            if (token.equalsIgnoreCase("false")) return false;
+            if (token.equalsIgnoreCase("0"))     return false;
+            throw new InputMismatchException(
+                    "attempts to read a 'boolean' value from standard input, " +
+                    "but next token is \"" + token + "\"."
+            );
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException(
+                    "attempts to read a 'boolean' from standard input, but no more tokens are available."
+            );
+        }
+    }
+
     public static void main(String[] args) {
         StdOut.print("Type int: ");
         int a = StdIn.readInt();
@@ -122,6 +140,11 @@ public class StdIn {
         StdOut.print("Type long: ");
         long d = StdIn.readLong();
         StdOut.println("Your long was " + d);
+        StdOut.println();
+
+        StdOut.print("Type boolean: ");
+        boolean e = StdIn.readBoolean();
+        StdOut.println("Your boolean was " + e);
         StdOut.println();
     }
 }
