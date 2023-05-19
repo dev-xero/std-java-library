@@ -87,6 +87,22 @@ public class StdIn {
         }
     }
 
+    public static long readLong() {
+        try {
+            return scanner.nextLong();
+        } catch (InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException(
+                    "attempts to read a 'long' value from standard input, " +
+                    "but next token is \"" + token + "\"."
+            );
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException(
+                    "attempts to read a 'long' from standard input, but no more tokens are available."
+            );
+        }
+    }
+
     public static void main(String[] args) {
         StdOut.print("Type int: ");
         int a = StdIn.readInt();
@@ -101,6 +117,11 @@ public class StdIn {
         StdOut.print("Type float: ");
         float c = StdIn.readFloat();
         StdOut.println("Your float was " + c);
+        StdOut.println();
+
+        StdOut.print("Type long: ");
+        long d = StdIn.readLong();
+        StdOut.println("Your long was " + d);
         StdOut.println();
     }
 }
