@@ -2,6 +2,10 @@
 ☕ A basic API of methods which are already defined in the standard Java API plus a few more.
 
 ## Documentation
+There are three (3) classes in the API currently:
+- **StdOut**: a collection of methods for printing to the standard output
+- **StdStats**: a collection of basic statistical methods
+- **StdIn**: a collection of methods for reading and returning input from the standard input
 
 ## [1] StdOut
 
