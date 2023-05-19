@@ -121,6 +121,18 @@ public class StdIn {
         }
     }
 
+    public static char readChar() {
+        try {
+            scanner.useDelimiter(WHITE_SPACE_PATTERN);
+            String ch = scanner.next();
+            return ch.charAt(0);
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException(
+                    "attempts to read a 'char' from standard input, but no more tokens are available."
+            );
+        }
+    }
+
     public static void main(String[] args) {
         StdOut.print("Type int: ");
         int a = StdIn.readInt();
