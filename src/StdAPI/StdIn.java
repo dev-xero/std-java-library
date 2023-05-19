@@ -1,7 +1,9 @@
 package StdAPI;
 
 import java.io.BufferedInputStream;
+import java.util.InputMismatchException;
 import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -37,7 +39,26 @@ public class StdIn {
         }
     }
 
+    public static int readInt() {
+        try {
+            return scanner.nextInt();
+        } catch(InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException(
+                    "attempts to read an 'int' value from standard input, " +
+                    "but next token is \"" + token + "\"."
+            );
+        } catch(NoSuchElementException e) {
+            throw new NoSuchElementException(
+                    "attempts to read an 'int' from standard input, but no more tokens are available."
+            );
+        }
+    }
+
     public static void main(String[] args) {
-        StdOut.println(StdIn.isEmpty());
+        StdOut.print("Type int: ");
+        int a = StdIn.readInt();
+        StdOut.println("Your int was " + a);
+        StdOut.println();
     }
 }
