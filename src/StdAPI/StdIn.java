@@ -133,6 +133,15 @@ public class StdIn {
         }
     }
 
+    public static String readAll() {
+        if (!scanner.hasNext()) {
+            return "";
+        }
+        String result = scanner.useDelimiter(EVERYTHING_PATTERN).next();
+        scanner.useDelimiter(WHITE_SPACE_PATTERN);
+        return result;
+    }
+
     public static void main(String[] args) {
         StdOut.print("Type int: ");
         int a = StdIn.readInt();
